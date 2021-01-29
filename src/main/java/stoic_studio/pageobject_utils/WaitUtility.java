@@ -1,4 +1,4 @@
-package stoic_studio.utility;
+package stoic_studio.pageobject_utils;
 
 public final class WaitUtility {
 

@@ -5,6 +5,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.List;
+
 @Slf4j
 public abstract class PageObject {
 
@@ -30,6 +32,24 @@ public abstract class PageObject {
         return isAttached(webElement);
     }
 
+
+    /**
+     * Boolean method verifies the existence of WebElement.
+     *
+     * @param webElements webElements
+     * @return true = if element is visible, false = if element is not visible.
+     */
+    public boolean isCurrentlyVisible(List<WebElement> webElements) {
+        boolean elementDisplayed = false;
+        for (WebElement webElement : webElements) {
+            elementDisplayed = isAttached(webElement);
+            if (!elementDisplayed) {
+                break;
+            }
+        }
+        return elementDisplayed;
+    }
+
     /**
      * Boolean method verifies the existence of WebElement.
      *
@@ -47,7 +67,7 @@ public abstract class PageObject {
     /**
      * Boolean method verifies the existence of WebElement.By.
      *
-     * @param By it can be xpath, accessibility id, css, classname etc...
+     * @param by it can be xpath, accessibility id, css, classname etc...
      * @return true = if element is visible, false = if element is not visible.
      */
     protected boolean isAttached(By by) {
