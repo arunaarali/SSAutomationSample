@@ -23,6 +23,8 @@ public class HomePageObject extends PageObject {
     List<WebElement> displayed_Games;
     @FindBy(xpath = "(//ul[@id='nav'])[last()]")
     List<WebElement> navbar_items;
+    @FindBy(xpath = "(//a[contains(text(),\"ABOUT US\")])[1]")
+    WebElement aboutUsNavbar;
 
     public HomePageObject(WebDriver webDriver) {
         super(webDriver);
@@ -42,7 +44,7 @@ public class HomePageObject extends PageObject {
 
     public void clickSubscribeButton() {
         isCurrentlyVisible(subscriber_Button);
-        subscriber_Button.clear();
+        subscriber_Button.click();
     }
 
     public boolean verifyTheExistenceOfGameSectionHeader() {
@@ -71,6 +73,11 @@ public class HomePageObject extends PageObject {
                 break;
             }
         }
+    }
+
+    @Override
+    public WebElement getPageID(){
+        return enterEmailID_textBox;
     }
 
 }

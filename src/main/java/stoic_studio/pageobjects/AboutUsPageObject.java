@@ -22,17 +22,21 @@ public class AboutUsPageObject extends PageObject {
         PageFactory.initElements(webDriver, this);
     }
 
-    public List<String> getMembersName(){
+    public List<String> getMembersName() {
         List<String> membersName = new ArrayList<String>();
         isCurrentlyVisible(teamMembers);
-        for(WebElement webElement: teamMembers){
+        for (WebElement webElement : teamMembers) {
             membersName.add(webElement.getText());
         }
         return membersName;
     }
 
-    public boolean aboutUsHeaderDisplayed(){
+    public boolean aboutUsHeaderDisplayed() {
         return isAttached(aboutUsPage_Header);
     }
 
+    @Override
+    public WebElement getPageID() {
+        return aboutUsPage_Header;
+    }
 }

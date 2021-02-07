@@ -11,15 +11,14 @@ import java.util.List;
 public abstract class PageObject {
 
     @Getter
-    protected WebDriver webDriver;
+    protected WebDriver driver;
     @Getter
     protected WebDriver wait;
     @Getter
     protected int waitTimeInSeconds = 30;
 
     public PageObject(WebDriver webDriver) {
-        this.webDriver = webDriver;
-        wait = (WebDriver) new WebDriverWait(webDriver, waitTimeInSeconds);
+        this.driver = webDriver;
     }
 
     /**
@@ -50,6 +49,10 @@ public abstract class PageObject {
         return elementDisplayed;
     }
 
+    public boolean isPageVisible(){
+        return isAttached(getPageID());
+    }
+
     /**
      * Boolean method verifies the existence of WebElement.
      *
@@ -72,10 +75,14 @@ public abstract class PageObject {
      */
     protected boolean isAttached(By by) {
         try {
-            return webDriver.findElements(by).size() > 0;
+            return driver.findElements(by).size() > 0;
         } catch (NoSuchElementException | StaleElementReferenceException exception) {
             return false;
         }
     }
+
+
+
+    public abstract WebElement getPageID();
 
 }

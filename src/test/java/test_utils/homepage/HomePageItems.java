@@ -6,8 +6,8 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @AllArgsConstructor
-enum HomePageItems {
-    HOME_PAGE_TITLE("The Banner Saga "),
+public enum HomePageItems {
+    HOME_PAGE_TITLE("The Banner Saga"),
     GAMES("GAMES"),
     DISCORD("DISCORD"),
     NEWS("NEWS"),
